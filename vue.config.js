@@ -35,7 +35,7 @@ module.exports = {
     productionSourceMap: true, //不生成map
     runtimeCompiler: true, // 包含运行时编译器的 Vue 构建版本
     publicPath: './',
-    // outputDir: '../tt/www/',
+    // outputDir: '../tt/www/', // 输出的dist文件夹路径
     assetsDir: './',
     filenameHashing: true,
     devServer: {
