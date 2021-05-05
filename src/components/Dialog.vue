@@ -8,7 +8,7 @@
     v-model="showDialog"
   >
     <slot name="body">
-      <i class="el-icon-warning"></i>
+      <i class="icon-default el-icon-warning"></i>
       这是Dialog
     </slot>
     <!-- 底部按钮组 -->
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+// 父子件绑定 ref 给 showDialog 传值 Boolean 显示对话框
 import { ref } from 'vue'
 export default {
   name: 'Dialog',
@@ -78,4 +79,11 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+// $gray-desc: #999;
+.icon-default {
+  font-size: 22px;
+  vertical-align: middle !important;
+  color: $gray-desc;
+}
+</style>

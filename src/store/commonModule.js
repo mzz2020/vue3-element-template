@@ -1,10 +1,7 @@
-export default ({
-  state: {
-  },
-  mutations: {
-  },
-  getters: {
-  },
+export default {
+  state: {},
+  mutations: {},
+  getters: {},
   actions: {
     // async fetchcityAreaTrees ({ commit, getters }, params) {
     //   const { cityAreaTrees } = getters.getHttps
@@ -16,4 +13,4 @@ export default ({
     //   }
     // }
   }
-})
+}

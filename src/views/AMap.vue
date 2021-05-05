@@ -55,7 +55,7 @@ export default {
     }
     // 加载地图实例
     AMapLoader.load(AMapLoaderOptiion)
-      .then((AMap) => {
+      .then(AMap => {
         // 地图实例配置
         amap.value = new AMap.Map('AMapRef', {
           zoom: 13, // 级别
@@ -68,7 +68,7 @@ export default {
         // 实例化圆
         circleMarker.value = new AMap.Circle(circleCon)
         // 加载多个圆点
-        circleList.value.map((circle) => {
+        circleList.value.map(circle => {
           const circleCenter = new AMap.LngLat(circle[0], circle[1])
           // if (circleMarker.value.contains(circleCenter)) {}  // 如果点在圆内则输出下面的语句写在if里面
           let Marker = new AMap.Marker({
@@ -82,7 +82,7 @@ export default {
         // circleMarker.value.setMap(amap.value)
         amap.value.setFitView() //根据地图上添加的覆盖物分布情况，自动缩放地图到合适的视野级别
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e)
       })
 

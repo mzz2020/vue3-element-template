@@ -2,18 +2,8 @@
   <div class="home">
     <qrcanvas />
     <div style="margin: 16px 0"></div>
-    <el-button type="info" @click="openDialog">显示Dialog</el-button>
-    <Dialog ref="dialogRef" :showBtn="true" @click-submit="submit">
-      <template #body>
-        <i class="el-icon-info"></i>
-        my name is Charlie, Im five
-        <Dialog ref="dialogRef1">
-          <template #body>
-            <div>我是爸爸</div>
-          </template>
-        </Dialog>
-      </template>
-    </Dialog>
+    <el-button type="success" @click="openDialog">显示Dialog</el-button>
+    <Dialog ref="dialogRef" :showBtn="true" @click-submit="submit"></Dialog>
   </div>
 </template>
 

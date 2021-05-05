@@ -9,7 +9,7 @@ import { onMounted, ref } from 'vue'
 import { qrcanvas } from 'qrcanvas'
 export default {
   name: 'Qrcanvas',
-  setup () {
+  setup() {
     const qrcanvasRef = ref()
     onMounted(() => {
       const qrcanvasResult = new qrcanvas({

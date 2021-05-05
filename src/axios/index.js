@@ -2,7 +2,7 @@ import axios from 'axios'
 import { APIS, BASEURL } from '@/API'
 
 export default class CreateAxios {
-  constructor (store) {
+  constructor(store) {
     this.store = store
     this.time = new Date()
     this.init()
@@ -26,7 +26,7 @@ export default class CreateAxios {
     return await this.initResponse(instance, config, nParams, url, method)
   }
 
-  initParams (params, isFromData) {
+  initParams(params, isFromData) {
     if (Object.keys(params).length > 0 && isFromData) {
       const nFromData = new FormData()
       Object.keys(params).forEach(results => {
@@ -71,36 +71,43 @@ export default class CreateAxios {
     return response
   }
 
-  interceptorsRequest (instance) {
-    instance.interceptors.request.use((config) => {
-      instance.defaults.headers.login_token = this.store.getters.token
-      // this.store.commit('setError', { status: true, message: '', type: 'loading', duration: 0 })
-      return config
-    }, error => {
-      return Promise.reject(error)
-    })
-  }
-
-  interceptorsResponse (instance) {
-    instance.interceptors.response.use((config) => {
-      this.store.commit('setError', { status: false, message: '' })
-      return config
-    }, error => {
-      this.store.commit('setError', { status: false, message: '' })
-      if (error && error.response) {
-        const eMsg = error.response.data
-        this.store.commit('setError', { status: true, message: eMsg })
-      } else {
-        this.store.commit('setError', { status: true, message: '系统错误' })
+  interceptorsRequest(instance) {
+    instance.interceptors.request.use(
+      config => {
+        instance.defaults.headers.login_token = this.store.getters.token
+        // this.store.commit('setError', { status: true, message: '', type: 'loading', duration: 0 })
+        return config
+      },
+      error => {
+        return Promise.reject(error)
       }
-      return Promise.reject(error)
-    })
+    )
   }
 
-  init () {
+  interceptorsResponse(instance) {
+    instance.interceptors.response.use(
+      config => {
+        this.store.commit('setError', { status: false, message: '' })
+        return config
+      },
+      error => {
+        this.store.commit('setError', { status: false, message: '' })
+        if (error && error.response) {
+          const eMsg = error.response.data
+          this.store.commit('setError', { status: true, message: eMsg })
+        } else {
+          this.store.commit('setError', { status: true, message: '系统错误' })
+        }
+        return Promise.reject(error)
+      }
+    )
+  }
+
+  init() {
     if (APIS.length > 0) {
       APIS.map(item => {
-        this.https[item.name] = (params = {}, isFromData = false, config = {}) => this.initHttpFn(params, isFromData, config, item.url, item.method)
+        this.https[item.name] = (params = {}, isFromData = false, config = {}) =>
+          this.initHttpFn(params, isFromData, config, item.url, item.method)
       })
       this.store.commit('setHttps', this.https)
     }

@@ -10,21 +10,21 @@ export default createStore({
   },
   mutations: {
     // 修改https值
-    setHttps (state, https) {
+    setHttps(state, https) {
       state.https = { ...https }
     },
     // 更新token
-    setToken (state, token) {
+    setToken(state, token) {
       state.token = token
       localStorage.setItem('authToken', token)
     },
-    setLoginOut (state) {
+    setLoginOut(state) {
       state.token = ''
       state.user = { isLogin: false }
       localStorage.removeItem('authToken')
     },
     // 设置error
-    setError (state, params) {
+    setError(state, params) {
       state.error = { ...params }
     }
   },
@@ -33,8 +33,7 @@ export default createStore({
     getToken: state => state.token,
     getError: state => state.error
   },
-  actions: {
-  },
+  actions: {},
   modules: {
     commonModules
   }
