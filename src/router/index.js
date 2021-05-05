@@ -11,10 +11,7 @@ const routes = [
   {
     path: '/amap',
     name: 'AMap',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AMap.vue')
+    component: () => import('../views/AMap.vue')
   }
 ]
 
