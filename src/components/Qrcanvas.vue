@@ -9,12 +9,22 @@ import { onMounted, ref } from 'vue'
 import { qrcanvas } from 'qrcanvas'
 export default {
   name: 'Qrcanvas',
-  setup() {
+  props: {
+    data: {
+      type: Object,
+      default: () => {}
+    },
+    size: {
+      type: Number,
+      default: 128
+    }
+  },
+  setup(props) {
     const qrcanvasRef = ref()
     onMounted(() => {
       const qrcanvasResult = new qrcanvas({
-        data: '我的二维码',
-        size: 128
+        data: props.data,
+        size: props.size
       })
       qrcanvasRef.value.innerHTML = ''
       qrcanvasRef.value.appendChild(qrcanvasResult)
