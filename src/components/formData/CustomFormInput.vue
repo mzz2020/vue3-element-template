@@ -1,6 +1,12 @@
 <template>
   <el-form-item :label="label" :prop="prop">
-    <el-input @input="updateValue" v-model="inputModel" :placeholder="placeholder"></el-input>
+    <el-input
+      :name="prop"
+      @input="updateValue"
+      v-model="modelValue"
+      :placeholder="placeholder"
+      autocomplete="off"
+    ></el-input>
   </el-form-item>
 </template>
 
@@ -19,20 +25,17 @@ export default {
       type: String
     },
     modelValue: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   setup(props, context) {
-    const inputModel = ref(props.modelValue || '')
     const updateValue = value => {
-      inputModel.value = value
       context.emit('update:modelValue', value)
     }
-    return { inputModel, updateValue }
+    return { updateValue }
   }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -12,9 +12,9 @@
       这是Dialog
     </slot>
     <!-- 底部按钮组 -->
-    <template #footer>
+    <template #footer v-if="showBtn">
       <slot name="btn">
-        <div v-if="showBtn">
+        <div>
           <el-button v-if="showCloseBtn" @click="showDialog = false">取 消</el-button>
           <el-button v-if="showSubimtBtn" type="primary" @click="clickSubmit">确 定</el-button>
         </div>
@@ -80,10 +80,24 @@ export default {
 </script>
 
 <style lang="scss">
-// $gray-desc: #999;
 .icon-default {
   font-size: 22px;
   vertical-align: middle !important;
   color: $gray-desc;
+}
+.el-dialog__headerbtn {
+  position: inherit !important;
+}
+.el-dialog__body,
+.el-dialog__footer,
+.el-dialog__header {
+  padding: 10px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.el-dialog__footer,
+.el-dialog__body {
+  justify-content: center;
 }
 </style>

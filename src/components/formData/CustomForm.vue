@@ -1,6 +1,6 @@
 <template>
   <el-form
-    :model="formModel"
+    :model="model"
     :label-width="labelWidth"
     :label-position="labelPosition"
     :rules="rules"
@@ -11,13 +11,11 @@
 </template>
 
 <script>
-import { computed } from 'vue'
 export default {
   name: 'CustomForm',
   props: {
-    models: {
-      type: Object,
-      default: () => {}
+    model: {
+      type: Object
     },
     labelWidth: {
       type: String,
@@ -28,21 +26,14 @@ export default {
       default: 'right'
     },
     rules: {
-      type: Array,
-      default: () => []
+      type: Object
     },
     inline: {
       type: Boolean,
       default: false
     }
-  },
-  setup(props) {
-    const formModel = computed(() => props.models)
-    return { formModel }
   }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

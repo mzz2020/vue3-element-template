@@ -11,8 +11,7 @@ export default {
   name: 'Qrcanvas',
   props: {
     data: {
-      type: Object,
-      default: () => {}
+      type: String
     },
     size: {
       type: Number,
@@ -36,5 +35,6 @@ export default {
 
 <style lang="scss">
 .qrcode {
+  text-align: center;
 }
 </style>
