@@ -5,41 +5,39 @@
     <!-- 打开对话框 -->
     <el-button type="success" @click="openDialog">显示Dialog</el-button>
     <!-- 弹框组件 -->
-    <Dialog ref="dialogRef" title="二维码" width="180px" :showBtn="false" @click-submit="submit">
+    <ml-dialog ref="dialogRef" title="四维码" width="180px" :showBtn="false" @click-submit="submit">
       <template #body>
-        <!-- 二维码生成 -->
-        <qrcanvas :data="qrCanvasData" style="margin-bottom: 10px;" />
+        <ml-qrcanvas :data="qrCanvasData" style="margin-bottom: 10px" />
       </template>
-    </Dialog>
+    </ml-dialog>
+    <!-- <Dialog ref="dialogRef" title="二维码" width="180px" :showBtn="false" @click-submit="submit">
+      <template #body> -->
+    <!-- 二维码生成 -->
+    <!-- <qrcanvas :data="qrCanvasData" style="margin-bottom: 10px;" />
+      </template>
+    </Dialog> -->
     <!-- 换行 -->
     <div style="margin: 16px 0"></div>
     <!-- 表单组件，from -->
-    <custom-form :model="fromData" :rules="rules" inline class="custom-form">
+    <ml-customform :model="fromData" :rules="rules" inline class="custom-form">
       <!-- 表单项input，加校验 -->
-      <custom-form-input label="邮箱" prop="email" v-model="fromData.email" />
-    </custom-form>
+      <ml-customforminput label="邮箱" prop="email" v-model="fromData.email" />
+    </ml-customform>
     <!-- heighCharts 图表组件 -->
-    <heigh-charts-view :style="{ width: '500px', height: '200px', margin: '20px auto' }" :id="heighChartsData.id" :option="heighChartsData.option" />
+    <ml-highchartsview
+      :style="{ width: '500px', height: '200px', margin: '20px auto' }"
+      :id="heighChartsData.id"
+      :option="heighChartsData.option"
+    />
   </div>
 </template>
 
 <script>
-import Qrcanvas from '../components/Qrcanvas.vue'
-import Dialog from '../components/Dialog.vue'
-import CustomForm from '../components/formData/CustomForm.vue'
-import CustomFormInput from '../components/formData/CustomFormInput.vue'
-import HeighChartsView from '../components/highchartsView.vue'
 import { reactive, ref } from 'vue'
 
 export default {
   name: 'Home',
-  components: {
-    Qrcanvas,
-    Dialog,
-    CustomForm,
-    CustomFormInput,
-    HeighChartsView
-  },
+  components: {},
   setup() {
     // 对话框 Dom
     const dialogRef = ref()

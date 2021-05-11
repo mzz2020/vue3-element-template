@@ -58,7 +58,7 @@ export default {
       .then(AMap => {
         // 地图实例配置
         amap.value = new AMap.Map('AMapRef', {
-          zoom: 13, // 级别
+          zoom: 10, // 级别
           zooms: [4, 18], //设置地图级别范围
           viewMode: '3D', // 使用3D视图
           center: [116.397428, 39.90923] //中心点坐标
