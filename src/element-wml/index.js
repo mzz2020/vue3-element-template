@@ -7,6 +7,8 @@ import CustomFormInput from './CustomFormInput.vue'
 import highchartsView from './highchartsView.vue'
 // 二维码组件
 import Qrcanvas from './Qrcanvas.vue'
+// tinymce冨文本
+import Tinymce from './Tinymce.vue'
 
 // 单个导出
 export const _default = {
@@ -14,7 +16,8 @@ export const _default = {
   CustomForm,
   CustomFormInput,
   highchartsView,
-  Qrcanvas
+  Qrcanvas,
+  Tinymce
 }
 // 全局导出
 export default {

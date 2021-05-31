@@ -1,20 +1,27 @@
 <template>
   <div class="tinymce">
-    <tinymce v-model="contentValue" :height="200" />
-    <div v-html="contentValue"></div>
+    <el-form :model="ab" inline>
+      <el-form-item>
+        <ml-tinymce v-model="ab.v" :height="200" />
+      </el-form-item>
+    </el-form>
+    <div v-html="ab.v"></div>
   </div>
 </template>
 
 <script>
-import Tinymce from '../element-wml/Tinymce.vue'
+// import Tinymce from '../element-wml/Tinymce.vue'
 import { reactive, ref, watch } from 'vue'
 export default {
   name: 'Tinymces',
   components: {
-    Tinymce
+    // Tinymce
   },
   setup() {
     const contentValue = ref('123123')
+    const ab = reactive({
+      v: '123123123'
+    })
     const init = reactive({
       language_url: '/tinymce/langs/zh_CN.js', //引入语言包文件
       language: 'zh_CN', //语言类型
@@ -57,7 +64,8 @@ export default {
     )
     return {
       contentValue,
-      init
+      init,
+      ab
     }
   }
 }
