@@ -12,9 +12,12 @@ export default {
     option: Object
   },
   setup(props) {
-    watch(() => props.option, () => {
-      Highcharts.chart(props.id, props.option)
-    })
+    watch(
+      () => props.option,
+      () => {
+        Highcharts.chart(props.id, props.option)
+      }
+    )
     onMounted(() => {
       Highcharts.chart(props.id, props.option)
     })
@@ -22,6 +25,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -2,7 +2,8 @@
   <div>
     <div id="nav">
       <router-link to="/">Qrcanvas</router-link> |
-      <router-link to="/amap">AMap</router-link>
+      <router-link to="/amap">AMap</router-link> |
+      <router-link to="/tinymce">tinymce</router-link>
     </div>
     <router-view />
   </div>
