@@ -21,7 +21,7 @@ import { APIS, BASEURL } from '@/API'
 // 创建 Axios 类实例
 export default class CreateAxios {
   // 类的构造方法
-  constructor (store) {
+  constructor(store) {
     this.store = store
     this.time = new Date()
     this.init()
@@ -51,7 +51,7 @@ export default class CreateAxios {
     return await this.initResponse(config, nParams, url, method)
   }
   // 定义所属配置方法， 返回对应的新属性
-  initParams (params, isFromData) {
+  initParams(params, isFromData) {
     if (Object.keys(params).length > 0 && isFromData) {
       const nFromData = new FormData()
       Object.keys(params).forEach(results => {
@@ -96,40 +96,47 @@ export default class CreateAxios {
     return response
   }
   // 发送请求拦截器，请求前需要做的事，例如，加载前显示Loading
-  interceptorsRequest () {
-    this.instance.interceptors.request.use((config) => {
-      this.instance.defaults.headers.login_token = this.store.getters.token
-      // 这里可放Loading方法
-      if (!this.isLoading) {
-        this.isLoading = ElLoading.service()
+  interceptorsRequest() {
+    this.instance.interceptors.request.use(
+      config => {
+        this.instance.defaults.headers.login_token = this.store.getters.token
+        // 这里可放Loading方法
+        if (!this.isLoading) {
+          this.isLoading = ElLoading.service()
+        }
+        return config
+      },
+      error => {
+        return Promise.reject(error)
       }
-      return config
-    }, error => {
-      return Promise.reject(error)
-    })
+    )
   }
   // 响应拦截器，请求响应时需要做的事，例如，处理公共错误提示框
-  interceptorsResponse () {
-    this.instance.interceptors.response.use((config) => {
-      this.isLoading.close()
-      this.store.commit('setError', { status: false, message: '' })
-      return config
-    }, error => {
-      this.store.commit('setError', { status: false, message: '' })
-      if (error && error.response) {
-        const eMsg = error.response.data
-        this.store.commit('setError', { status: true, message: eMsg })
-      } else {
-        this.store.commit('setError', { status: true, message: '系统错误' })
+  interceptorsResponse() {
+    this.instance.interceptors.response.use(
+      config => {
+        this.isLoading.close()
+        this.store.commit('setError', { status: false, message: '' })
+        return config
+      },
+      error => {
+        this.store.commit('setError', { status: false, message: '' })
+        if (error && error.response) {
+          const eMsg = error.response.data
+          this.store.commit('setError', { status: true, message: eMsg })
+        } else {
+          this.store.commit('setError', { status: true, message: '系统错误' })
+        }
+        return Promise.reject(error)
       }
-      return Promise.reject(error)
-    })
+    )
   }
   // 初始化 API 所对应的入口方法，并交其注入 vuex 的 https 中
-  init () {
+  init() {
     if (APIS.length > 0) {
       APIS.map(item => {
-        this.https[item.name] = (params = {}, isFromData = false, config = {}) => this.initHttpFn(params, isFromData, config, item.url, item.method)
+        this.https[item.name] = (params = {}, isFromData = false, config = {}) =>
+          this.initHttpFn(params, isFromData, config, item.url, item.method)
       })
       // 注入 vuex
       this.store.commit('setHttps', this.https)

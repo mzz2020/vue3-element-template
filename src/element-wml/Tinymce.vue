@@ -78,7 +78,7 @@ export default {
 
       // plugins: this.plugins, //插件配置
       // toolbar: this.toolbar, //工具栏配置，设为false则隐藏
-      menubar: 'file edit',  //菜单栏配置，设为false则隐藏，不配置则默认显示全部菜单，也可自定义配置--查看 http://tinymce.ax-z.cn/configure/editor-appearance.php --搜索“自定义菜单”
+      menubar: 'file edit', //菜单栏配置，设为false则隐藏，不配置则默认显示全部菜单，也可自定义配置--查看 http://tinymce.ax-z.cn/configure/editor-appearance.php --搜索“自定义菜单”
 
       fontsize_formats: '12px 14px 16px 18px 20px 22px 24px 28px 32px 36px 48px 56px 72px', //字体大小
       font_formats:
@@ -99,6 +99,7 @@ export default {
       // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
       // 如需ajax上传可参考https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler
       images_upload_handler: (blobInfo, success, failure) => {
+        console.log(failure)
         const img = 'data:image/jpeg;base64,' + blobInfo.base64()
         success(img)
       }

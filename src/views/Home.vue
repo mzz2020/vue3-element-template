@@ -23,6 +23,7 @@
       <!-- 表单项input，加校验 -->
       <ml-customforminput label="邮箱" prop="email" v-model="fromData.email" />
     </ml-customform>
+    {{ fromData.email }}
     <!-- heighCharts 图表组件 -->
     <ml-highchartsview
       :style="{ width: '500px', height: '200px', margin: '20px auto' }"

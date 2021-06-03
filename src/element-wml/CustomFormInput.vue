@@ -3,7 +3,7 @@
     <el-input
       :name="prop"
       @input="updateValue"
-      v-model="modelValue"
+      v-model="value"
       :placeholder="placeholder"
       autocomplete="off"
     ></el-input>
@@ -30,10 +30,11 @@ export default {
     }
   },
   setup(props, context) {
+    const value = ref(props.modelValue)
     const updateValue = value => {
       context.emit('update:modelValue', value)
     }
-    return { updateValue }
+    return { value, updateValue }
   }
 }
 </script>

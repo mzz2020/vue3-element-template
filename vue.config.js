@@ -19,6 +19,15 @@ module.exports = {
   },
   configureWebpack: config => {},
   chainWebpack: config => {
+    const svgRule = config.module.rule('svg')
+    svgRule.uses.clear()
+    svgRule
+    .use('svg-sprite-loader')
+    .loader('svg-sprite-loader')
+    .options({
+      symbolId: "icon-[name]"
+    })
+    .end()
     // config.resolve.alias
     // .set('@', path.resolve(__dirname, './src'))
     // .set('@components', path.resolve(__dirname, './src/components'))

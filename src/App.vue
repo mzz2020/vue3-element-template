@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="height: 100%">
     <div id="nav">
-      <router-link to="/">Qrcanvas</router-link> |
-      <router-link to="/amap">AMap</router-link> |
+      <router-link to="/">Qrcanvas</router-link> | <router-link to="/amap">AMap</router-link> |
+      <router-link to="/svg">SVG</router-link> |
       <router-link to="/tinymce">tinymce</router-link>
     </div>
     <router-view />

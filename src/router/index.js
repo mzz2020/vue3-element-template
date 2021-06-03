@@ -14,6 +14,11 @@ const routes = [
     component: () => import('../views/AMap.vue')
   },
   {
+    path: '/svg',
+    name: 'Svg',
+    component: () => import('../views/Svg.vue')
+  },
+  {
     path: '/tinymce',
     name: 'Tinymce',
     component: () => import('../views/Tinymce.vue')
