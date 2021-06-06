@@ -131,6 +131,19 @@
           style="fill:white; stroke:red; stroke-width:2"/>
       </svg-col>
     </el-row>
+    <el-row>
+      <svg-col :span="4" header="高斯滤镜">
+        <!-- cx cy 中心点 r 半径 stroke 边框颜色 stroke-width 边框尺寸 fill 填充颜色 -->
+        <!-- 高斯滤镜 -->
+        
+        <defs>
+          <filter id="Gaussian_Blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+          </filter>
+        </defs>
+        <circle cx="50%" cy="50%" r="30%" stroke="#80DEEA" stroke-width="3" fill="#00BCD4" />
+      </svg-col>
+    </el-row>
   </div>
 </template>
 
